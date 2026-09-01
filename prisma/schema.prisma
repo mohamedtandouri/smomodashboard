@@ -1,0 +1,120 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// -------------------------
+// CUSTOMERS
+// -------------------------
+model Customer {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?  @unique
+  phone     String?
+  orders    Order[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// -------------------------
+// PRODUCTS & CATEGORIES
+// -------------------------
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  products  Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Float
+  stock       Int      @default(0)
+  
+  categoryId  String?
+  category    Category? @relation(fields: [categoryId], references: [id])
+  
+  orderItems  OrderItem[]
+  reviews     Review[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// -------------------------
+// ORDERS
+// -------------------------
+model Order {
+  id          String      @id @default(cuid())
+  orderNumber String      @unique
+  
+  customerId  String?
+  customer    Customer?   @relation(fields: [customerId], references: [id])
+  
+  status      String      @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
+  
+  subtotal    Float       @default(0)
+  discount    Float       @default(0)
+  shippingFee Float       @default(0)
+  tax         Float       @default(0)
+  total       Float       @default(0)
+  
+  note        String?
+  tags        String?     // Comma separated tags
+  
+  items       OrderItem[]
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  
+  orderId   String
+  order     Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+  
+  quantity  Int
+  price     Float
+}
+
+// -------------------------
+// MARKETING (Coupons & Up Sells)
+// -------------------------
+model Coupon {
+  id            String   @id @default(cuid())
+  code          String   @unique
+  discountType  String   // FIXED or PERCENTAGE
+  discountValue Float
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}
+
+model UpSell {
+  id            String   @id @default(cuid())
+  name          String
+  targetProductId String
+  offerProductId  String
+  discount      Float
+  isActive      Boolean  @default(true)
+}
+
+// -------------------------
+// REVIEWS
+// -------------------------
+model Review {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+}
