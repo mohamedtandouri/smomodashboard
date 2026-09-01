@@ -1,6 +1,7 @@
 "use client"
 
-import { Bell, Menu, Moon, Search, Sun, User, Store } from "lucide-react"
+import { Bell, Menu, Moon, Search, Sun, User, Store, ExternalLink } from "lucide-react"
+import Link from "next/link"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -62,6 +63,17 @@ export function Header({ onMenuClick }: HeaderProps) {
             className="w-full bg-muted/50 pl-9 border-none focus-visible:ring-1"
           />
         </div>
+
+        <Link href="/store" target="_blank" title="Go to Storefront">
+          <Button variant="outline" size="sm" className="hidden sm:flex gap-2 text-primary border-primary/20 hover:bg-primary/10">
+            <ExternalLink className="h-4 w-4" />
+            <span>View Store</span>
+          </Button>
+          <Button variant="ghost" size="icon" className="sm:hidden text-primary">
+            <ExternalLink className="h-5 w-5" />
+            <span className="sr-only">View Store</span>
+          </Button>
+        </Link>
 
         <Button
           variant="ghost"

@@ -506,7 +506,7 @@ function ToolbarButton({
           : "text-gray-500 hover:bg-gray-200 hover:text-gray-900"
       } ${disabled ? "opacity-40 cursor-not-allowed" : ""}`}
     >
-      {React.cloneElement(icon as React.ReactElement, { className: "w-[18px] h-[18px]" })}
+      {React.cloneElement(icon as React.ReactElement<any>, { className: "w-[18px] h-[18px]" })}
     </button>
   )
 }

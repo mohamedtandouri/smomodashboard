@@ -3,13 +3,12 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
-import { DashboardLayout } from "@/components/layout/DashboardLayout"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Smomo Dashboard",
-  description: "Advanced e-commerce management dashboard",
+  title: "Smomo Shop",
+  description: "Advanced e-commerce store",
 }
 
 export default function RootLayout({
@@ -19,15 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className="h-full">
-      <body className={`${inter.className} h-full overflow-hidden bg-background antialiased`}>
+      <body className={`${inter.className} min-h-screen bg-background antialiased flex flex-col`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
         >
-          <DashboardLayout>
-            {children}
-          </DashboardLayout>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>
