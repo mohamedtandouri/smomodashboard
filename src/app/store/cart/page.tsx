@@ -29,7 +29,7 @@ export default function CartPage() {
         </p>
         <Link 
           href="/store/products" 
-          className="inline-flex items-center justify-center bg-[#b02a87] text-white px-8 py-3 rounded-md font-medium hover:bg-[#90226e] transition-colors"
+          className="inline-flex items-center justify-center bg-[#ff2d55] text-white px-8 py-3 rounded-md font-medium hover:bg-[#e6224c] transition-colors"
         >
           Start Shopping
         </Link>
@@ -69,7 +69,7 @@ export default function CartPage() {
                       </div>
                     </Link>
                     <div className="flex-1 min-w-0">
-                      <Link href={`/products/${item.id}`} className="font-semibold text-gray-900 hover:text-[#b02a87] truncate block">
+                      <Link href={`/products/${item.id}`} className="font-semibold text-gray-900 hover:text-[#ff2d55] truncate block">
                         {item.title}
                       </Link>
                       <button 
@@ -119,7 +119,7 @@ export default function CartPage() {
           </div>
           
           <div className="flex justify-between items-center px-2">
-             <Link href="/store/products" className="text-[#b02a87] font-medium hover:underline flex items-center gap-2">
+             <Link href="/store/products" className="text-[#ff2d55] font-medium hover:underline flex items-center gap-2">
                 Continue Shopping
              </Link>
           </div>
@@ -147,12 +147,12 @@ export default function CartPage() {
             
             <div className="flex justify-between items-center mb-8">
               <span className="text-lg font-bold text-gray-900">Estimated Total</span>
-              <span className="text-2xl font-black text-[#b02a87]">${getTotalPrice().toFixed(2)}</span>
+              <span className="text-2xl font-black text-[#ff2d55]">${getTotalPrice().toFixed(2)}</span>
             </div>
 
             <Link 
               href="/store/checkout" 
-              className="w-full flex items-center justify-center gap-2 bg-[#b02a87] text-white py-4 rounded-lg font-bold hover:bg-[#90226e] transition-colors shadow-lg shadow-[#b02a87]/20"
+              className="w-full flex items-center justify-center gap-2 bg-[#ff2d55] text-white py-4 rounded-lg font-bold hover:bg-[#e6224c] transition-colors shadow-lg shadow-[#ff2d55]/20"
             >
               Proceed to Checkout <ArrowRight className="w-5 h-5" />
             </Link>

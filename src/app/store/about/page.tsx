@@ -9,7 +9,7 @@ export default function AboutPage() {
       <section className="bg-gray-50 py-20 border-b">
         <div className="container mx-auto px-4 text-center max-w-3xl">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">
-            About <span className="text-[#b02a87]">SMOMO.</span>
+            About <span className="text-[#ff2d55]">SMOMO.</span>
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             We started with a simple vision: to make premium quality products accessible to everyone while delivering an unmatched online shopping experience.
@@ -40,15 +40,15 @@ export default function AboutPage() {
               </p>
               <div className="pt-4 space-y-3">
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-[#b02a87] w-5 h-5" />
+                  <CheckCircle2 className="text-[#ff2d55] w-5 h-5" />
                   <span className="text-gray-800 font-medium">Curated high-quality products</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-[#b02a87] w-5 h-5" />
+                  <CheckCircle2 className="text-[#ff2d55] w-5 h-5" />
                   <span className="text-gray-800 font-medium">Exceptional customer service</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle2 className="text-[#b02a87] w-5 h-5" />
+                  <CheckCircle2 className="text-[#ff2d55] w-5 h-5" />
                   <span className="text-gray-800 font-medium">Fast and reliable shipping worldwide</span>
                 </div>
               </div>
@@ -64,7 +64,7 @@ export default function AboutPage() {
           <p className="text-gray-400 mb-8 text-lg">Join thousands of satisfied customers and discover your next favorite product today.</p>
           <Link 
             href="/store/products" 
-            className="inline-flex bg-[#b02a87] hover:bg-[#90226e] text-white px-8 py-3 rounded-lg font-bold transition-colors"
+            className="inline-flex bg-[#ff2d55] hover:bg-[#e6224c] text-white px-8 py-3 rounded-lg font-bold transition-colors"
           >
             Start Shopping
           </Link>

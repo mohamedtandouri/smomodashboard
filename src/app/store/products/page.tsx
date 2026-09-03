@@ -43,8 +43,8 @@ export default async function ProductsPage({
             <ul className="space-y-2">
               <li>
                 <Link 
-                  href={`/products${sort ? `?sort=${sort}` : ''}`}
-                  className={`text-sm ${!categoryId ? 'text-[#b02a87] font-medium' : 'text-gray-600 hover:text-gray-900'}`}
+                  href={`/store/products${sort ? `?sort=${sort}` : ''}`}
+                  className={`text-sm ${!categoryId ? 'text-[#ff2d55] font-medium' : 'text-gray-600 hover:text-gray-900'}`}
                 >
                   All Categories
                 </Link>
@@ -52,8 +52,8 @@ export default async function ProductsPage({
               {categories.map((cat) => (
                 <li key={cat.id}>
                   <Link 
-                    href={`/products?category=${cat.id}${sort ? `&sort=${sort}` : ''}`}
-                    className={`text-sm ${categoryId === cat.id ? 'text-[#b02a87] font-medium' : 'text-gray-600 hover:text-gray-900'}`}
+                    href={`/store/products?category=${cat.id}${sort ? `&sort=${sort}` : ''}`}
+                    className={`text-sm ${categoryId === cat.id ? 'text-[#ff2d55] font-medium' : 'text-gray-600 hover:text-gray-900'}`}
                   >
                     {cat.name}
                   </Link>
@@ -72,19 +72,19 @@ export default async function ProductsPage({
             </div>
             <div className="flex gap-2">
               <Link 
-                href={`/products?${categoryId ? `category=${categoryId}&` : ''}sort=newest`}
+                href={`/store/products?${categoryId ? `category=${categoryId}&` : ''}sort=newest`}
                 className={`px-3 py-1.5 text-xs font-medium rounded ${(!sort || sort === 'newest') ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50'}`}
               >
                 Newest
               </Link>
               <Link 
-                href={`/products?${categoryId ? `category=${categoryId}&` : ''}sort=price_asc`}
+                href={`/store/products?${categoryId ? `category=${categoryId}&` : ''}sort=price_asc`}
                 className={`px-3 py-1.5 text-xs font-medium rounded ${sort === 'price_asc' ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50'}`}
               >
                 Price: Low to High
               </Link>
               <Link 
-                href={`/products?${categoryId ? `category=${categoryId}&` : ''}sort=price_desc`}
+                href={`/store/products?${categoryId ? `category=${categoryId}&` : ''}sort=price_desc`}
                 className={`px-3 py-1.5 text-xs font-medium rounded ${sort === 'price_desc' ? 'bg-gray-100 text-gray-900' : 'text-gray-500 hover:bg-gray-50'}`}
               >
                 Price: High to Low
@@ -96,16 +96,16 @@ export default async function ProductsPage({
           {products.length === 0 ? (
             <div className="text-center py-20 bg-gray-50 border border-gray-200 rounded-lg border-dashed">
               <p className="text-gray-500">No products found matching your criteria.</p>
-              <Link href="/store/products" className="text-[#b02a87] font-medium mt-2 inline-block hover:underline">Clear Filters</Link>
+              <Link href="/store/products" className="text-[#ff2d55] font-medium mt-2 inline-block hover:underline">Clear Filters</Link>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {products.map((product) => (
-                <Link href={`/products/${product.id}`} key={product.id} className="group block">
-                  <div className="border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-xl hover:border-[#b02a87]/30 transition-all duration-300 flex flex-col h-full">
+                <Link href={`/store/products/${product.id}`} key={product.id} className="group block">
+                  <div className="border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-xl hover:border-[#ff2d55]/30 transition-all duration-300 flex flex-col h-full">
                     <div className="aspect-square bg-gray-100 relative overflow-hidden">
                       <img 
-                        src={`https://picsum.photos/seed/${product.id}/400/400`} 
+                        src={product.imageUrl || `https://picsum.photos/seed/${product.id}/400/400`} 
                         alt={product.name}
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                       />
@@ -121,7 +121,7 @@ export default async function ProductsPage({
                         <p className="text-xs text-gray-500 mb-2">{product.category.name}</p>
                       )}
                       <div className="mt-auto pt-2 flex items-center justify-between">
-                        <span className="text-[#b02a87] font-bold text-lg">${product.price.toFixed(2)}</span>
+                        <span className="text-[#ff2d55] font-bold text-lg">${product.price.toFixed(2)}</span>
                         {product.stock === 0 && (
                           <span className="text-xs text-red-500 font-medium">Out of stock</span>
                         )}

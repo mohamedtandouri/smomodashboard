@@ -137,7 +137,7 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
     },
     editorProps: {
       attributes: {
-        class: 'w-full p-4 min-h-[256px] outline-none resize-none text-sm text-gray-700 prose max-w-none',
+        class: 'w-full p-4 min-h-[256px] outline-none resize-none text-sm text-foreground prose dark:prose-invert max-w-none',
       },
     },
   })
@@ -232,28 +232,28 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
   }
 
   return (
-    <div ref={containerRef} className="border border-gray-200 rounded-md bg-white flex flex-col relative z-10">
+    <div ref={containerRef} className="border border-border rounded-md bg-card flex flex-col relative z-10 text-card-foreground">
       
       {/* Primary Toolbar */}
-      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-100 bg-gray-50/50 rounded-t-md">
+      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-border bg-muted/50 rounded-t-md">
         <ToolbarButton icon={<Maximize />} onClick={toggleFullscreen} />
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
         
         <ToolbarButton icon={<Bold />} onClick={() => editor.chain().focus().toggleBold().run()} isActive={editor.isActive('bold')} />
         <ToolbarButton icon={<Italic />} onClick={() => editor.chain().focus().toggleItalic().run()} isActive={editor.isActive('italic')} />
         <ToolbarButton icon={<UnderlineIcon />} onClick={() => editor.chain().focus().toggleUnderline().run()} isActive={editor.isActive('underline')} />
         <ToolbarButton icon={<Strikethrough />} onClick={() => editor.chain().focus().toggleStrike().run()} isActive={editor.isActive('strike')} />
         
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
         
         {/* Font Size Mock */}
-        <button className="flex items-center gap-1 p-1.5 text-sm font-medium text-gray-700 hover:bg-gray-200 rounded">
+        <button className="flex items-center gap-1 p-1.5 text-sm font-medium text-foreground hover:bg-muted rounded">
           12 <ChevronDown className="w-3 h-3" />
         </button>
         
         {/* Text Color */}
-        <label className="p-1.5 text-gray-500 hover:bg-gray-200 rounded transition-colors cursor-pointer flex items-center relative" title="Text Color">
-          <Type className="w-4 h-4 text-gray-700" />
+        <label className="p-1.5 text-muted-foreground hover:bg-muted rounded transition-colors cursor-pointer flex items-center relative" title="Text Color">
+          <Type className="w-4 h-4 text-foreground" />
           <input 
             type="color" 
             className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
@@ -263,8 +263,8 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
         </label>
         
         {/* Highlight Color */}
-        <label className="p-1.5 text-gray-500 hover:bg-gray-200 rounded transition-colors cursor-pointer flex items-center relative" title="Highlight Color">
-          <Highlighter className="w-4 h-4 text-gray-700" />
+        <label className="p-1.5 text-muted-foreground hover:bg-muted rounded transition-colors cursor-pointer flex items-center relative" title="Highlight Color">
+          <Highlighter className="w-4 h-4 text-foreground" />
           <input 
             type="color" 
             className="absolute inset-0 opacity-0 cursor-pointer w-full h-full"
@@ -274,11 +274,11 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
 
         <ToolbarButton icon={<Eraser />} onClick={() => editor.chain().focus().unsetAllMarks().clearNodes().run()} title="Clear Formatting" />
         
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
         
         {/* Paragraph Format */}
         <select 
-          className="bg-transparent text-sm font-medium text-gray-700 focus:outline-none cursor-pointer p-1 rounded hover:bg-gray-200"
+          className="bg-transparent text-sm font-medium text-foreground focus:outline-none cursor-pointer p-1 rounded hover:bg-muted"
           onChange={(e) => {
             const val = e.target.value;
             if (val === 'p') editor.chain().focus().setParagraph().run();
@@ -296,39 +296,39 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
           <option value="3">H3 Heading 3</option>
         </select>
 
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
 
         <ToolbarButton icon={<AlignLeft />} onClick={() => editor.chain().focus().setTextAlign('left').run()} isActive={editor.isActive({ textAlign: 'left' })} />
         <ToolbarButton icon={<AlignCenter />} onClick={() => editor.chain().focus().setTextAlign('center').run()} isActive={editor.isActive({ textAlign: 'center' })} />
         <ToolbarButton icon={<AlignRight />} onClick={() => editor.chain().focus().setTextAlign('right').run()} isActive={editor.isActive({ textAlign: 'right' })} />
         <ToolbarButton icon={<AlignJustify />} onClick={() => editor.chain().focus().setTextAlign('justify').run()} isActive={editor.isActive({ textAlign: 'justify' })} />
         
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
 
         <ToolbarButton icon={<List />} onClick={() => editor.chain().focus().toggleBulletList().run()} isActive={editor.isActive('bulletList')} />
         <ToolbarButton icon={<ListOrdered />} onClick={() => editor.chain().focus().toggleOrderedList().run()} isActive={editor.isActive('orderedList')} />
         <ToolbarButton icon={<Outdent />} onClick={() => editor.chain().focus().liftListItem('listItem').run()} disabled={!editor.can().liftListItem('listItem')} />
         <ToolbarButton icon={<Indent />} onClick={() => editor.chain().focus().sinkListItem('listItem').run()} disabled={!editor.can().sinkListItem('listItem')} />
         
-        <div className="w-px h-5 bg-gray-300 mx-1"></div>
+        <div className="w-px h-5 bg-border mx-1"></div>
 
         {/* Text Link Dropdown Modal */}
         <div className="relative">
           <ToolbarButton icon={<LinkIcon />} onClick={openLinkDialog} isActive={editor.isActive('link') || linkDialog} />
           
           {linkDialog && (
-            <div className="absolute z-50 top-full ltr:left-0 rtl:right-0 mt-1 p-3 bg-white rounded-md shadow-lg border border-gray-200 w-[280px]">
-               <h4 className="text-sm font-semibold mb-3 text-gray-800">Insert Link</h4>
+            <div className="absolute z-50 top-full ltr:left-0 rtl:right-0 mt-1 p-3 bg-card rounded-md shadow-lg border border-border w-[280px]">
+               <h4 className="text-sm font-semibold mb-3 text-foreground">Insert Link</h4>
                
                <div>
-                 <label className="text-xs font-semibold text-gray-600 mb-1.5 block">From Link</label>
+                 <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">From Link</label>
                  <div className="flex gap-2">
-                   <input ref={linkURLRef} onKeyDown={handleLinkKeyDown} type="text" placeholder="https://..." className="flex-1 text-sm border border-gray-200 rounded px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#b02a87]/20 focus:border-[#b02a87] transition-all min-w-0" />
-                   <button onClick={handleLinkSubmitDialog} type="button" className="shrink-0 bg-[#b02a87] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#90226e] transition-colors">Apply</button>
+                   <input ref={linkURLRef} onKeyDown={handleLinkKeyDown} type="text" placeholder="https://..." className="flex-1 text-sm bg-background border border-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#ff2d55]/20 focus:border-[#ff2d55] transition-all min-w-0" />
+                   <button onClick={handleLinkSubmitDialog} type="button" className="shrink-0 bg-[#ff2d55] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#e6224c] transition-colors">Apply</button>
                  </div>
                </div>
                
-               <button onClick={() => setLinkDialog(false)} className="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors">
+               <button onClick={() => setLinkDialog(false)} className="absolute top-2 right-2 p-1 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors">
                  <X className="w-4 h-4" />
                </button>
             </div>
@@ -340,10 +340,10 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
           <ToolbarButton icon={<TableIcon />} onClick={() => setTableDialog(!tableDialog)} isActive={tableDialog} />
           
           {tableDialog && (
-            <div className="absolute z-50 top-full ltr:left-0 rtl:right-0 mt-1 p-3 bg-white rounded-md shadow-lg border border-gray-200 w-[260px]">
+            <div className="absolute z-50 top-full ltr:left-0 rtl:right-0 mt-1 p-3 bg-card rounded-md shadow-lg border border-border w-[260px]">
                <div className="flex justify-between items-center mb-3">
-                 <h4 className="text-sm font-semibold text-gray-800">Insert Table</h4>
-                 <button onClick={() => setTableDialog(false)} className="p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors">
+                 <h4 className="text-sm font-semibold text-foreground">Insert Table</h4>
+                 <button onClick={() => setTableDialog(false)} className="p-1 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors">
                    <X className="w-4 h-4" />
                  </button>
                </div>
@@ -351,8 +351,8 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
                {/* Grid Selector */}
                <div className="mb-4">
                  <div className="flex justify-between items-center mb-2">
-                   <span className="text-xs text-gray-500 font-medium">Grid Selection</span>
-                   <span className="text-xs font-bold text-[#b02a87]">{hoveredCell.r > 0 ? `${hoveredCell.c} × ${hoveredCell.r}` : '0 × 0'}</span>
+                   <span className="text-xs text-muted-foreground font-medium">Grid Selection</span>
+                   <span className="text-xs font-bold text-[#ff2d55]">{hoveredCell.r > 0 ? `${hoveredCell.c} × ${hoveredCell.r}` : '0 × 0'}</span>
                  </div>
                  <div className="flex flex-col gap-0.5" onMouseLeave={() => setHoveredCell({ r: 0, c: 0 })}>
                    {Array.from({ length: 8 }).map((_, r) => (
@@ -362,7 +362,7 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
                          return (
                            <div 
                              key={c}
-                             className={`w-6 h-6 border rounded-sm cursor-pointer transition-colors duration-75 ${isHovered ? 'bg-[#b02a87]/20 border-[#b02a87]/50' : 'bg-white border-gray-100 hover:border-gray-300'}`}
+                             className={`w-6 h-6 border rounded-sm cursor-pointer transition-colors duration-75 ${isHovered ? 'bg-[#ff2d55]/20 border-[#ff2d55]/50' : 'bg-background border-border hover:border-gray-400'}`}
                              onMouseEnter={() => setHoveredCell({ r: r + 1, c: c + 1 })}
                              onClick={() => {
                                 editor.chain().focus().insertTable({ rows: r + 1, cols: c + 1, withHeaderRow: true }).run();
@@ -377,19 +377,19 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
                </div>
 
                {/* Custom Input */}
-               <div className="border-t border-gray-100 pt-3">
-                 <span className="text-xs text-gray-500 font-medium mb-2 block">Custom Size</span>
+               <div className="border-t border-border pt-3">
+                 <span className="text-xs text-muted-foreground font-medium mb-2 block">Custom Size</span>
                  <div className="flex items-center gap-2">
-                   <input type="number" min="1" max="100" value={tableInputs.cols} onChange={e => setTableInputs(p => ({ ...p, cols: parseInt(e.target.value) || 1 }))} className="w-16 text-xs border border-gray-200 rounded px-1.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#b02a87]/20 focus:border-[#b02a87] transition-all" placeholder="Cols" title="Columns" />
-                   <span className="text-xs text-gray-400">×</span>
-                   <input type="number" min="1" max="100" value={tableInputs.rows} onChange={e => setTableInputs(p => ({ ...p, rows: parseInt(e.target.value) || 1 }))} className="w-16 text-xs border border-gray-200 rounded px-1.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#b02a87]/20 focus:border-[#b02a87] transition-all" placeholder="Rows" title="Rows" />
+                   <input type="number" min="1" max="100" value={tableInputs.cols} onChange={e => setTableInputs(p => ({ ...p, cols: parseInt(e.target.value) || 1 }))} className="w-16 text-xs bg-background border border-border rounded px-1.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#ff2d55]/20 focus:border-[#ff2d55] transition-all" placeholder="Cols" title="Columns" />
+                   <span className="text-xs text-muted-foreground">×</span>
+                   <input type="number" min="1" max="100" value={tableInputs.rows} onChange={e => setTableInputs(p => ({ ...p, rows: parseInt(e.target.value) || 1 }))} className="w-16 text-xs bg-background border border-border rounded px-1.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#ff2d55]/20 focus:border-[#ff2d55] transition-all" placeholder="Rows" title="Rows" />
                    <button 
                      onClick={() => {
                        editor.chain().focus().insertTable({ rows: tableInputs.rows, cols: tableInputs.cols, withHeaderRow: true }).run();
                        setTableDialog(false);
                      }}
                      type="button"
-                     className="ml-auto shrink-0 bg-[#b02a87] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#90226e] transition-colors"
+                     className="ml-auto shrink-0 bg-[#ff2d55] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#e6224c] transition-colors"
                    >
                      Add
                    </button>
@@ -407,31 +407,31 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
       </div>
 
       {/* Secondary Toolbar */}
-      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-100 bg-gray-50/50 relative min-h-[42px]">
+      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-border bg-muted/50 relative min-h-[42px]">
         <ToolbarButton icon={<Undo className="scale-x-[-1]" />} onClick={() => editor.chain().focus().redo().run()} disabled={!editor.can().redo()} />
         <ToolbarButton icon={<ImageIcon />} onClick={() => setMediaDialog({ isOpen: true, type: 'image' })} />
         <ToolbarButton icon={<Video />} onClick={() => setMediaDialog({ isOpen: true, type: 'video' })} />
         
         {/* Media Size Controls (Shows when image/video is selected) */}
         {selectedMedia && (
-          <div className="ml-4 flex items-center bg-white border border-gray-200 shadow-sm rounded-md p-1 gap-2">
-            <span className="text-xs font-semibold text-gray-600 pl-1">Size:</span>
+          <div className="ml-4 flex items-center bg-card border border-border shadow-sm rounded-md p-1 gap-2">
+            <span className="text-xs font-semibold text-muted-foreground pl-1">Size:</span>
             <div className="flex items-center gap-1">
-              <span className="text-[10px] text-gray-400 font-medium">W</span>
+              <span className="text-[10px] text-muted-foreground font-medium">W</span>
               <input 
                 type="text" 
                 placeholder="auto" 
-                className="w-16 text-xs border border-gray-200 rounded px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#b02a87]"
+                className="w-16 text-xs bg-background border border-border rounded px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#ff2d55]"
                 value={editor.getAttributes(selectedMedia.type).width || ''}
                 onChange={(e) => updateMediaSize('width', e.target.value)}
               />
             </div>
             <div className="flex items-center gap-1">
-              <span className="text-[10px] text-gray-400 font-medium">H</span>
+              <span className="text-[10px] text-muted-foreground font-medium">H</span>
               <input 
                 type="text" 
                 placeholder="auto" 
-                className="w-16 text-xs border border-gray-200 rounded px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#b02a87]"
+                className="w-16 text-xs bg-background border border-border rounded px-1.5 py-1 focus:outline-none focus:ring-1 focus:ring-[#ff2d55]"
                 value={editor.getAttributes(selectedMedia.type).height || ''}
                 onChange={(e) => updateMediaSize('height', e.target.value)}
               />
@@ -441,25 +441,25 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
         
         {/* Media Dialog Overlay */}
         {mediaDialog.isOpen && (
-          <div className="absolute z-50 top-full ltr:left-10 rtl:right-10 mt-1 p-3 bg-white rounded-md shadow-lg border border-gray-200 w-[280px]">
-             <h4 className="text-sm font-semibold mb-3 text-gray-800">Add {mediaDialog.type === 'image' ? 'Image' : 'Video'}</h4>
+          <div className="absolute z-50 top-full ltr:left-10 rtl:right-10 mt-1 p-3 bg-card rounded-md shadow-lg border border-border w-[280px]">
+             <h4 className="text-sm font-semibold mb-3 text-foreground">Add {mediaDialog.type === 'image' ? 'Image' : 'Video'}</h4>
              
              <div className="space-y-4">
                <div>
-                 <label className="text-xs font-semibold text-gray-600 mb-1.5 block">From Link</label>
+                 <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">From Link</label>
                  <div className="flex gap-2">
-                   <input ref={mediaLinkRef} onKeyDown={handleMediaKeyDown} type="text" placeholder="https://..." className="flex-1 text-sm border border-gray-200 rounded px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#b02a87]/20 focus:border-[#b02a87] transition-all min-w-0" />
-                   <button onClick={handleMediaSubmit} type="button" className="shrink-0 bg-[#b02a87] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#90226e] transition-colors">Add</button>
+                   <input ref={mediaLinkRef} onKeyDown={handleMediaKeyDown} type="text" placeholder="https://..." className="flex-1 text-sm bg-background border border-border rounded px-2.5 py-1.5 focus:outline-none focus:ring-2 focus:ring-[#ff2d55]/20 focus:border-[#ff2d55] transition-all min-w-0" />
+                   <button onClick={handleMediaSubmit} type="button" className="shrink-0 bg-[#ff2d55] text-white text-xs font-medium px-3 py-1.5 rounded hover:bg-[#e6224c] transition-colors">Add</button>
                  </div>
                </div>
                
-               <div className="relative border-t border-gray-100 pt-3">
-                 <label className="text-xs font-semibold text-gray-600 mb-1.5 block">Upload from Computer</label>
-                 <input type="file" accept={mediaDialog.type === 'image' ? 'image/*' : 'video/*'} className="text-xs w-full text-gray-500 file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-medium file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 cursor-pointer" onChange={handleFileUpload} />
+               <div className="relative border-t border-border pt-3">
+                 <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">Upload from Computer</label>
+                 <input type="file" accept={mediaDialog.type === 'image' ? 'image/*' : 'video/*'} className="text-xs w-full text-muted-foreground file:mr-3 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-medium file:bg-muted file:text-foreground hover:file:bg-muted/80 cursor-pointer" onChange={handleFileUpload} />
                </div>
              </div>
              
-             <button onClick={() => setMediaDialog({ isOpen: false, type: 'image' })} className="absolute top-2 right-2 p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition-colors">
+             <button onClick={() => setMediaDialog({ isOpen: false, type: 'image' })} className="absolute top-2 right-2 p-1 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors">
                <X className="w-4 h-4" />
              </button>
           </div>
@@ -467,13 +467,13 @@ export function RichTextEditor({ value, onChange, placeholder = "Type something"
       </div>
       
       {/* Editor Content Area */}
-      <div className="bg-white min-h-[256px]">
+      <div className="bg-background min-h-[256px]">
         <EditorContent editor={editor} />
       </div>
       
       {/* Footer Area */}
-      <div className="p-2 border-t border-gray-100 flex justify-end bg-gray-50/30 rounded-b-md">
-        <button type="button" className="p-2 bg-purple-50 text-purple-600 rounded-md hover:bg-purple-100 transition-colors border border-purple-100 flex items-center gap-2 text-sm font-medium" title="Generate description with AI">
+      <div className="p-2 border-t border-border flex justify-end bg-muted/30 rounded-b-md">
+        <button type="button" className="p-2 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-300 rounded-md hover:bg-purple-100 dark:hover:bg-purple-900/40 transition-colors border border-purple-100 dark:border-purple-800/30 flex items-center gap-2 text-sm font-medium" title="Generate description with AI">
           <Sparkles className="w-4 h-4" /> AI Generate
         </button>
       </div>
@@ -502,8 +502,8 @@ function ToolbarButton({
       title={title}
       className={`p-1.5 rounded transition-colors ${
         isActive 
-          ? "bg-gray-200 text-gray-900 font-bold shadow-inner" 
-          : "text-gray-500 hover:bg-gray-200 hover:text-gray-900"
+          ? "bg-muted text-foreground font-bold shadow-inner" 
+          : "text-muted-foreground hover:bg-muted hover:text-foreground"
       } ${disabled ? "opacity-40 cursor-not-allowed" : ""}`}
     >
       {React.cloneElement(icon as React.ReactElement<any>, { className: "w-[18px] h-[18px]" })}

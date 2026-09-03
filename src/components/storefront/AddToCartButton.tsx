@@ -74,7 +74,7 @@ export function AddToCartButton({ product }: AddToCartButtonProps) {
         className={`w-full py-3 px-4 flex items-center justify-center gap-2 font-bold rounded-md transition-all ${
           added 
             ? 'bg-green-500 text-white' 
-            : 'bg-[#b02a87] text-white hover:bg-[#90226e] shadow-md shadow-[#b02a87]/20'
+            : 'bg-[#ff2d55] text-white hover:bg-[#e6224c] shadow-md shadow-[#ff2d55]/20'
         }`}
       >
         {added ? (

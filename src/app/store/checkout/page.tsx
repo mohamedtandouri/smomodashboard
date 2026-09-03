@@ -31,7 +31,7 @@ export default function CheckoutPage() {
         </p>
         <Link 
           href="/store/products" 
-          className="inline-flex items-center justify-center bg-[#b02a87] text-white px-8 py-3 rounded-md font-medium hover:bg-[#90226e] transition-colors"
+          className="inline-flex items-center justify-center bg-[#ff2d55] text-white px-8 py-3 rounded-md font-medium hover:bg-[#e6224c] transition-colors"
         >
           Continue Shopping
         </Link>
@@ -43,7 +43,7 @@ export default function CheckoutPage() {
     return (
       <div className="container mx-auto px-4 py-24 text-center">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Your cart is empty</h1>
-        <Link href="/store/products" className="text-[#b02a87] hover:underline">Go back to shopping</Link>
+        <Link href="/store/products" className="text-[#ff2d55] hover:underline">Go back to shopping</Link>
       </div>
     )
   }
@@ -90,16 +90,16 @@ export default function CheckoutPage() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                  <input required name="name" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                  <input required name="name" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input required name="email" type="email" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                    <input required name="email" type="email" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Phone (Optional)</label>
-                    <input name="phone" type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                    <input name="phone" type="tel" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                   </div>
                 </div>
               </div>
@@ -111,16 +111,16 @@ export default function CheckoutPage() {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Address</label>
-                  <input required name="address" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                  <input required name="address" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">City</label>
-                    <input required name="city" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                    <input required name="city" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Postal Code</label>
-                    <input required name="postal" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" />
+                    <input required name="postal" type="text" className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" />
                   </div>
                 </div>
               </div>
@@ -168,14 +168,14 @@ export default function CheckoutPage() {
             
             <div className="flex justify-between items-center mb-8 border-t border-gray-200 pt-6">
               <span className="text-lg font-bold text-gray-900">Total</span>
-              <span className="text-2xl font-black text-[#b02a87]">${total.toFixed(2)}</span>
+              <span className="text-2xl font-black text-[#ff2d55]">${total.toFixed(2)}</span>
             </div>
 
             <button 
               type="submit"
               form="checkout-form"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 bg-[#b02a87] text-white py-4 rounded-lg font-bold hover:bg-[#90226e] transition-colors disabled:opacity-70 shadow-lg shadow-[#b02a87]/20"
+              className="w-full flex items-center justify-center gap-2 bg-[#ff2d55] text-white py-4 rounded-lg font-bold hover:bg-[#e6224c] transition-colors disabled:opacity-70 shadow-lg shadow-[#ff2d55]/20"
             >
               {loading ? (
                 <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</>

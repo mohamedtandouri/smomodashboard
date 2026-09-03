@@ -8,14 +8,33 @@ generator client {
 }
 
 // -------------------------
-// CUSTOMERS
+// USERS & PROFILES
 // -------------------------
-model Customer {
-  id        String   @id @default(cuid())
+model User {
+  id        String    @id @default(cuid())
   name      String
-  email     String?  @unique
+  email     String    @unique
+  password  String
   phone     String?
+  role      String    @default("USER") // USER or ADMIN
+  
+  profile   Profile?
   orders    Order[]
+  
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Profile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  address   String?
+  city      String?
+  zipCode   String?
+  country   String?
+  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -35,6 +54,7 @@ model Product {
   description String?
   price       Float
   stock       Int      @default(0)
+  imageUrl    String?
   
   categoryId  String?
   category    Category? @relation(fields: [categoryId], references: [id])
@@ -53,8 +73,8 @@ model Order {
   id          String      @id @default(cuid())
   orderNumber String      @unique
   
-  customerId  String?
-  customer    Customer?   @relation(fields: [customerId], references: [id])
+  userId      String?
+  user        User?       @relation(fields: [userId], references: [id])
   
   status      String      @default("PENDING") // PENDING, PROCESSING, SHIPPED, DELIVERED, CANCELLED
   

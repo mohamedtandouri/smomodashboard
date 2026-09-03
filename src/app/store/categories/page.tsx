@@ -33,12 +33,12 @@ export default async function CategoriesPage() {
                 key={category.id}
                 className="group"
               >
-                <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-lg hover:border-[#b02a87]/30 transition-all duration-300 flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gray-50 text-[#b02a87] rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#b02a87]/10 transition-transform">
+                <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm hover:shadow-lg hover:border-[#ff2d55]/30 transition-all duration-300 flex items-start gap-4">
+                  <div className="w-12 h-12 bg-gray-50 text-[#ff2d55] rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:bg-[#ff2d55]/10 transition-transform">
                     <Folder className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900 text-lg group-hover:text-[#b02a87] transition-colors">{category.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-lg group-hover:text-[#ff2d55] transition-colors">{category.name}</h3>
                     <p className="text-sm text-gray-500 mt-1">
                       {category._count.products} Product{category._count.products !== 1 && 's'}
                     </p>

@@ -19,7 +19,7 @@ export default function ContactPage() {
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#b02a87] shrink-0">
+                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#ff2d55] shrink-0">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -29,7 +29,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#b02a87] shrink-0">
+                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#ff2d55] shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
@@ -39,7 +39,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#b02a87] shrink-0">
+                  <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-100 text-[#ff2d55] shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
@@ -59,25 +59,25 @@ export default function ContactPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" placeholder="John" />
+                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" placeholder="John" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" placeholder="Doe" />
+                    <input type="text" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" placeholder="Doe" />
                   </div>
                 </div>
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all" placeholder="john@example.com" />
+                  <input type="email" className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all" placeholder="john@example.com" />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                  <textarea rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#b02a87] focus:border-[#b02a87] outline-none transition-all resize-none" placeholder="How can we help you?"></textarea>
+                  <textarea rows={5} className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff2d55] focus:border-[#ff2d55] outline-none transition-all resize-none" placeholder="How can we help you?"></textarea>
                 </div>
 
-                <button type="button" className="w-full sm:w-auto px-8 py-3 bg-[#b02a87] text-white font-bold rounded-lg hover:bg-[#90226e] transition-colors shadow-lg shadow-[#b02a87]/20">
+                <button type="button" className="w-full sm:w-auto px-8 py-3 bg-[#ff2d55] text-white font-bold rounded-lg hover:bg-[#e6224c] transition-colors shadow-lg shadow-[#ff2d55]/20">
                   Send Message
                 </button>
               </form>

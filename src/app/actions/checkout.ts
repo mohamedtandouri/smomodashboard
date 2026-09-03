@@ -15,11 +15,17 @@ export async function createOrder(formData: FormData, cartItems: { id: string; q
       return { success: false, error: "Missing required fields or empty cart" }
     }
 
-    // 1. Find or create customer
-    let customer = await prisma.customer.findUnique({ where: { email } })
-    if (!customer) {
-      customer = await prisma.customer.create({
-        data: { name, email, phone }
+    // 1. Find or create user
+    let user = await prisma.user.findUnique({ where: { email } })
+    if (!user) {
+      user = await prisma.user.create({
+        data: { 
+          name, 
+          email, 
+          phone, 
+          password: 'temp', // We should ideally let them register or auto-generate a secure one
+          role: 'USER'
+        }
       })
     }
 
@@ -34,7 +40,7 @@ export async function createOrder(formData: FormData, cartItems: { id: string; q
     const order = await prisma.order.create({
       data: {
         orderNumber,
-        customerId: customer.id,
+        userId: user.id,
         status: "PENDING",
         subtotal,
         shippingFee,
